@@ -1,0 +1,255 @@
+/* ==== General Reset ==== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1f1f1f; /* dark grey */
+  color: #f1f1f1;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  margin: 0;
+}
+
+/* ==== Layout helpers ==== */
+main {
+  width: 100%;
+  max-width: 980px;
+}
+
+/* ==== Header ==== */
+header {
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+/* ==== Form Section ==== */
+.todo-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+#todo-input,
+#todo-date {
+  background-color: #2c2c2c;
+  border: 1px solid #444;
+  color: #f1f1f1;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  outline: none;
+  flex: 1;
+  min-width: 0; /* allow shrinking on small screens */
+}
+
+#todo-input::placeholder {
+  color: #bfbfbf;
+}
+
+#todo-input:focus,
+#todo-date:focus {
+  border-color: #8b5cf6; /* ungu */
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.08);
+}
+
+/* ==== Add Button (inline with form) ==== */
+#add-todo-btn {
+  background-color: #10b981; /* hijau */
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.18s ease;
+  white-space: nowrap;
+}
+
+#add-todo-btn:hover {
+  transform: translateY(-1px);
+  background-color: #059669;
+}
+
+/* ==== Action Section ==== */
+.action-section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.left-actions {
+  flex: 0 0 auto;
+}
+
+.filter-box {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+}
+
+/* responsive: allow wrapping on smaller screens */
+.filter-box > * {
+  min-width: 0;
+}
+
+/* ==== Purple Buttons (Filter & Clear All) ==== */
+#clear-all-btn,
+#apply-filter-btn {
+  background-color: #7c3aed; /* ungu */
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+#clear-all-btn:hover,
+#apply-filter-btn:hover {
+  transform: translateY(-1px);
+  background-color: #6d28d9;
+}
+
+#clear-filter-btn {
+  background-color: #404040;
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.45rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+#clear-filter-btn:hover {
+  transform: translateY(-1px);
+  background-color: #333333;
+}
+
+select#filter-type,
+#filter-input {
+  background-color: #2c2c2c;
+  border: 1px solid #444;
+  color: #f1f1f1;
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  outline: none;
+}
+
+/* ==== Todo Table ==== */
+.table-wrapper {
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+#todo-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 640px; /* keep columns readable on mobile with horizontal scroll */
+}
+
+#todo-table thead th {
+  background-color: #3b3b3b;
+  color: #f1f1f1;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+#todo-table td,
+#todo-table th {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #3a3a3a;
+  vertical-align: middle;
+  font-size: 0.95rem;
+}
+
+#todo-table tr:last-child td {
+  border-bottom: none;
+}
+
+#todo-table tr:hover {
+  background-color: #383838;
+}
+
+/* ==== Action Buttons in Table ==== */
+.action-btn {
+  padding: 0.35rem 0.6rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.18s ease;
+  margin-left: 6px;
+}
+
+.action-btn.edit {
+  background-color: #8b5cf6; /* ungu */
+  color: white;
+}
+
+.action-btn.delete {
+  background-color: #ef4444;
+  color: white;
+}
+
+.action-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* smaller screens: stack form & filter vertically */
+@media (max-width: 640px) {
+  .todo-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-box {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .action-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #add-todo-btn {
+    width: 100%;
+  }
+
+  #filter-input,
+  select#filter-type {
+    width: 100%;
+  }
+}
+
+/* ==== Footer ==== */
+footer {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #888;
+}

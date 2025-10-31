@@ -1,11 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List - Tantaha Ramadhan</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-do List - Tantaha Ramadhan</title>
+
+  <!-- CSS External File Link -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Tailwind (optional utilities, still safe to keep) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" defer></script>
 </head>
+
 <body>
-    
+  <!-- Header Content -->
+  <header>
+    <h1 class="text-3xl font-bold">What's Plan Today?</h1>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Form Section -->
+    <section class="form-section" aria-label="add todo">
+      <form id="todo-form" class="todo-form" onsubmit="return false;">
+        <!-- Todo Input -->
+        <input class="border p-2 rounded" type="text" id="todo-input" placeholder="Enter a new todo item"
+          aria-label="Todo name" />
+
+        <!-- Date Input -->
+        <input class="border p-2 rounded" type="date" id="todo-date" aria-label="Due date" />
+
+        <!-- Add Button (inline with form) -->
+        <button class="border p-2 rounded bg-green-500 text-white" type="button" id="add-todo-btn">
+          Add Todo
+        </button>
+      </form>
+    </section>
+
+    <!-- Action / Filter Section -->
+    <section class="flex action-section" aria-label="actions">
+      <div class="left-actions">
+        <!-- Clear All Button -->
+        <button class="border p-2 rounded bg-red-500 text-white" id="clear-all-btn">Clear All Todos</button>
+      </div>
+
+      <div class="right-actions filter-box" aria-label="filter">
+        <!-- Filter controls -->
+        <select id="filter-type" aria-label="Filter type" title="Filter type">
+          <option value="">Filter by</option>
+          <option value="no">No</option>
+          <option value="name">Name</option>
+          <option value="date">Date</option>
+          <option value="status">Status</option>
+        </select>
+
+        <input id="filter-input" type="text" placeholder="Type filter..." aria-label="Filter value" />
+
+        <button id="apply-filter-btn" class="border p-2 rounded bg-purple-600 text-white">Apply</button>
+        <button id="clear-filter-btn" class="border p-2 rounded bg-gray-600 text-white">Clear</button>
+      </div>
+    </section>
+
+    <!-- Todo Table Section -->
+    <section class="table-section">
+      <div class="table-wrapper">
+        <table id="todo-table" class="w-full text-left border-collapse">
+          <thead>
+            <tr>
+              <th class="py-2 px-3">No</th>
+              <th class="py-2 px-3">Name</th>
+              <th class="py-2 px-3">Date</th>
+              <th class="py-2 px-3">Status</th>
+              <th class="py-2 px-3">Action</th>
+            </tr>
+          </thead>
+          <tbody id="todo-body">
+            <tr>
+              <td colspan="5" class="text-center text-gray-400 py-4"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Content -->
+  <footer>
+    <p class="text-center text-gray-500">&copy; 2025 To-do List by Tanta</p>
+  </footer>
+
+  <!-- Javascript External File Link -->
+  <script src="js/script.js"></script>
 </body>
+
 </html>
