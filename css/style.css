@@ -245,6 +245,26 @@ select#filter-type,
   }
 }
 
+#quote-section {
+  margin: 3rem auto;
+  text-align: center;
+  font-style: italic;
+  color: #a78bfa; /* ungu lembut, senada sama tema */
+  font-size: 1.1rem;
+  line-height: 1.8;
+  opacity: 0.9;
+  max-width: 700px;
+}
+
+#quote-section p {
+  animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 0.9; transform: translateY(0); }
+}
+
 /* ==== Footer ==== */
 footer {
   margin-top: 1.5rem;
